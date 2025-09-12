@@ -1,0 +1,42 @@
+START
+
+Initialize player's balance (e.g., 100 credits)
+
+WHILE player has credits
+    DISPLAY current balance
+    ASK player how much to bet
+
+    IF bet is greater than balance
+        DISPLAY "Not enough credits"
+        CONTINUE loop
+    ENDIF
+
+    DEDUCT bet from balance
+
+    // Spin the reels
+    GENERATE 3 random symbols from a list (e.g., ["Cherry", "Lemon", "Bell", "Seven"])
+
+    DISPLAY the 3 symbols
+
+    // Check winnings
+    IF all 3 symbols match
+        CALCULATE payout = bet * jackpot multiplier
+        ADD payout to balance
+        DISPLAY "JACKPOT! You won payout"
+    ELSE IF 2 symbols match
+        CALCULATE payout = bet * small multiplier
+        ADD payout to balance
+        DISPLAY "You won payout"
+    ELSE
+        DISPLAY "Sorry, you lost"
+    ENDIF
+
+    ASK player if they want to play again
+    IF answer is no
+        BREAK loop
+    ENDIF
+ENDWHILE
+
+DISPLAY "Game Over! Final balance: " + balance
+
+END
